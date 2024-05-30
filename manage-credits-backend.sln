@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{841C8818-F36B-472D-994D-88BA581305C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageCredits.API", "ManageCredits.API\ManageCredits.API.csproj", "{E07C0DD3-C77D-4106-9CD1-A2E4546EE1FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{925CD76A-CF86-40E8-AFE0-A8B7DD1494A8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E07C0DD3-C77D-4106-9CD1-A2E4546EE1FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E07C0DD3-C77D-4106-9CD1-A2E4546EE1FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E07C0DD3-C77D-4106-9CD1-A2E4546EE1FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E07C0DD3-C77D-4106-9CD1-A2E4546EE1FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E07C0DD3-C77D-4106-9CD1-A2E4546EE1FA} = {841C8818-F36B-472D-994D-88BA581305C4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {673926DD-07C0-4495-9B84-5AB8AD1F5672}
+	EndGlobalSection
+EndGlobal
