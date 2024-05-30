@@ -13,4 +13,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ManageCredits.Contracts\ManageCredits.Contracts.csproj" />
+    <ProjectReference Include="..\ManageCredits.Domain.Entities\ManageCredits.Domain.Entities.csproj" />
+    <ProjectReference Include="..\ManageCredits.Domain.Helpers\ManageCredits.Domain.Helpers.csproj" />
+    <ProjectReference Include="..\ManageCredits.Domain\ManageCredits.Domain.csproj" />
+    <ProjectReference Include="..\ManageCredits.Infrastructure\ManageCredits.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

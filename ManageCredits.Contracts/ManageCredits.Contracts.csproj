@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ManageCredits.Domain.Entities\ManageCredits.Domain.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
