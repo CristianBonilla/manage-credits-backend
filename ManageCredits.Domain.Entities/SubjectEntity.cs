@@ -7,6 +7,5 @@ public class SubjectEntity : BaseEntity
   public Guid SubjectId { get; set; }
   public required string Name { get; set; }
   public string? Description { get; set; }
-  public required decimal TotalCredits { get; set; }
   public ICollection<ClassEntity> Classes { get; set; } = [];
 }
