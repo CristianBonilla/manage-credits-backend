@@ -1,0 +1,39 @@
+version: '3.9'
+
+networks:
+  manage-credits-network:
+  # default:
+  #   name: manage-credits-network
+
+services:
+  manage-credits-api:
+    image: ${DOCKER_REGISTRY-}managecreditsapi
+    container_name: manage-credits-API
+    build:
+      context: .
+      dockerfile: ManageCredits.API/Dockerfile
+    depends_on:
+      - manage-credits-db
+    networks:
+      - manage-credits-network
+
+  manage-credits-db:
+    image: mysql
+    restart: always
+    container_name: manage-credits-DB
+    hostname: mysql
+    environment:
+      - MYSQL_USER=credits
+      - MYSQL_PASSWORD=ManageCredits__Password
+      - MYSQL_ROOT_PASSWORD=ManageCredits__Password
+    ports:
+      - 8244:3306
+    expose:
+      - 8244
+    volumes:
+      - manage-credits-db:/var/lib/mysql
+    networks:
+      - manage-credits-network
+
+volumes:
+  manage-credits-db:

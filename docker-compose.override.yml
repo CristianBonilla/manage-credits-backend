@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  manage-credits-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:891;https://+:777
+      - ASPNETCORE_HTTP_PORTS=14533
+      - ASPNETCORE_HTTPS_PORTS=12399
+    ports:
+      - "14533:891"
+      - "12399:777"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

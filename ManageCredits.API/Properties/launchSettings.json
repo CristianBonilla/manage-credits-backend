@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "ManageCredits.API.http": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -10,7 +10,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5145"
     },
-    "https": {
+    "ManageCredits.API.https": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -33,11 +33,14 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "environmentVariables": {
-        "ASPNETCORE_HTTPS_PORTS": "8081",
-        "ASPNETCORE_HTTP_PORTS": "8080"
+        "ASPNETCORE_URLS": "http://+:891;https://+:777",
+        "ASPNETCORE_HTTP_PORTS": "14533",
+        "ASPNETCORE_HTTPS_PORTS": "12399"
       },
       "publishAllPorts": true,
-      "useSSL": true
+      "httpPort": 14533,
+      "useSSL": true,
+      "sslPort": 12399
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
