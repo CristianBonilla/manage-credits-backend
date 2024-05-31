@@ -10,11 +10,11 @@ public class StudentCreditsContext(DbContextOptions<StudentCreditsContext> optio
   protected override void OnModelCreating(ModelBuilder builder)
   {
     builder.ApplyEntityTypeConfig(seedData,
-      typeof(SubjectConfig),
-      typeof(ClassConfig),
       typeof(TeacherConfig),
       typeof(TeacherDetailConfig),
       typeof(StudentConfig),
-      typeof(StudentDetailConfig));
+      typeof(StudentDetailConfig),
+      typeof(SubjectConfig),
+      typeof(ClassConfig));
   }
 }

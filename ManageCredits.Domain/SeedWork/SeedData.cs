@@ -8,7 +8,10 @@ public class SeedData : ISeedData
   public SeedStudentCreditsData StudentCredits => new()
   {
     Teachers = StudentCreditsCollection.Teachers,
+    TeacherDetails = StudentCreditsCollection.TeacherDetails,
     Students = StudentCreditsCollection.Students,
-    Subjects = StudentCreditsCollection.Subjects 
+    StudentDetails = StudentCreditsCollection.StudentDetails,
+    Subjects = StudentCreditsCollection.Subjects,
+    Classes = StudentCreditsCollection.Classes
   };
 }

@@ -5,7 +5,7 @@ namespace ManageCredits.Domain.Helpers;
 
 public abstract class SeedDataCollection<TData> where TData : class
 {
-  int index;
+  int _index;
   readonly TData[] _collection;
 
   public int Count => _collection.Length;
@@ -33,6 +33,6 @@ public abstract class SeedDataCollection<TData> where TData : class
   private void Init(params TData[] collection)
   {
     foreach (TData data in collection)
-      _collection[index++] = data;
+      _collection[_index++] = data;
   }
 }

@@ -28,7 +28,7 @@ class SubjectConfig(ISeedData? seedData) : IEntityTypeConfiguration<SubjectEntit
       .HasForeignKey(key => key.SubjectId);
     builder.HasIndex(index => new { index.Name })
       .IsUnique();
-    //if (seedData is not null)
-    //  builder.HasData(seedData.StudentCredits.Subjects.GetAll());
+    if (seedData is not null)
+      builder.HasData(seedData.StudentCredits.Subjects.GetAll());
   }
 }

@@ -42,12 +42,12 @@ class TeacherConfig(ISeedData? seedData = null) : IEntityTypeConfiguration<Teach
       .OnDelete(DeleteBehavior.Cascade);
     builder.HasIndex(index => new { index.DocumentNumber, index.Email })
       .IsUnique();
-    //if (seedData is not null)
-    //  builder.HasData(seedData.StudentCredits.Teachers.GetAll());
+    if (seedData is not null)
+      builder.HasData(seedData.StudentCredits.Teachers.GetAll());
   }
 }
 
-class TeacherDetailConfig : IEntityTypeConfiguration<TeacherDetailEntity>
+class TeacherDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<TeacherDetailEntity>
 {
   public void Configure(EntityTypeBuilder<TeacherDetailEntity> builder)
   {
@@ -68,5 +68,7 @@ class TeacherDetailConfig : IEntityTypeConfiguration<TeacherDetailEntity>
     builder.HasOne(one => one.Subject)
       .WithMany()
       .HasForeignKey(key => key.SubjectId);
+    if (seedData is not null)
+      builder.HasData(seedData.StudentCredits.TeacherDetails.GetAll());
   }
 }

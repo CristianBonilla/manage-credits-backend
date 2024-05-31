@@ -1,14 +1,10 @@
 using ManageCredits.Domain.Entities;
-using ManageCredits.Domain.Entities.Details;
 using ManageCredits.Domain.Helpers;
 
 namespace ManageCredits.Domain.SeedWork.Collections.StudentCredits;
 
 class TeacherCollection : SeedDataCollection<TeacherEntity>
 {
-  const decimal TOTAL_CREDITS = 3.0M;
-  static readonly SubjectCollection _subjects = StudentCreditsCollection.Subjects;
-
   protected override TeacherEntity[] Collection => [
     new TeacherEntity
     {
@@ -18,22 +14,6 @@ class TeacherCollection : SeedDataCollection<TeacherEntity>
       Lastname = "Bonilla",
       Email = "cristian10camilo95@gmail.com",
       Profession = "Senior Software Developer",
-      Details = [
-        new TeacherDetailEntity
-        {
-          TeacherDetailId = new("{f87b9e01-7066-4a18-bbe5-560a9c6ddec2}"),
-          SubjectId = _subjects[0].SubjectId,
-          TotalCredits = TOTAL_CREDITS,
-          Created = new DateTimeOffset(2024, 2, 2, 1, 0, 0, TimeSpan.Zero)
-        },
-        new TeacherDetailEntity
-        {
-          TeacherDetailId = new("{f79f1e3c-8974-4b38-8f9d-72e738efb046}"),
-          SubjectId = _subjects[1].SubjectId,
-          TotalCredits = TOTAL_CREDITS,
-          Created = new DateTimeOffset(2024, 2, 3, 2, 1, 0, TimeSpan.Zero)
-        }
-      ],
       Created = new DateTimeOffset(2024, 2, 1, 0, 0, 0, TimeSpan.Zero)
     }
   ];

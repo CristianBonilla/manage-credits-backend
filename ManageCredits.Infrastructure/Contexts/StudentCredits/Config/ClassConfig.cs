@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ManageCredits.Domain.Entities;
+using ManageCredits.Contracts.DTO.SeedData;
 
 namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Config;
 
-class ClassConfig : IEntityTypeConfiguration<ClassEntity>
+class ClassConfig(ISeedData? seedData) : IEntityTypeConfiguration<ClassEntity>
 {
   public void Configure(EntityTypeBuilder<ClassEntity> builder)
   {
@@ -27,5 +28,7 @@ class ClassConfig : IEntityTypeConfiguration<ClassEntity>
       .HasForeignKey(key => key.ClassId);
     builder.HasIndex(index => new { index.Name })
       .IsUnique();
+    if (seedData is not null)
+      builder.HasData(seedData.StudentCredits.Classes.GetAll());
   }
 }
