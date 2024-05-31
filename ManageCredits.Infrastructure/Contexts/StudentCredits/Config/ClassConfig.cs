@@ -1,0 +1,31 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ManageCredits.Domain.Entities;
+
+namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Config;
+
+class ClassConfig : IEntityTypeConfiguration<ClassEntity>
+{
+  public void Configure(EntityTypeBuilder<ClassEntity> builder)
+  {
+    builder.ToTable("Class", "dbo")
+      .HasKey(key => key.ClassId);
+    builder.Property(property => property.ClassId)
+      .HasDefaultValueSql("UUID()");
+    builder.Property(property => property.Name)
+      .HasMaxLength(100)
+      .IsUnicode(false)
+      .IsRequired();
+    builder.Property(property => property.Description)
+      .HasColumnType("longtext");
+    builder.Property(property => property.Created)
+      .HasDefaultValueSql("UTC_TIMESTAMP()");
+    builder.Property(property => property.Version)
+      .IsRowVersion();
+    builder.HasOne(one => one.Subject)
+      .WithMany(many => many.Classes)
+      .HasForeignKey(key => key.ClassId);
+    builder.HasIndex(index => new { index.Name })
+      .IsUnique();
+  }
+}
