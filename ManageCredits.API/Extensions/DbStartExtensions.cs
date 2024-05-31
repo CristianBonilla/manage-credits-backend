@@ -39,7 +39,7 @@ static class DbStartExtensions
           delay = 0;
         }
       }
-      catch (MySqlException)
+      catch (MySqlException ex)
       {
         await Task.Delay(TimeSpan.FromSeconds(1));
         Console.WriteLine($"{++delay} seconds have passed Connecting...");

@@ -18,18 +18,20 @@ services:
       - manage-credits-network
 
   manage-credits-db:
-    image: mysql
+    image: mysql:8.0.37
     restart: always
     container_name: manage-credits-DB
     hostname: mysql
     environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=1
+      # - MYSQL_ROOT_PASSWORD=ManageCredits__Password
       - MYSQL_USER=credits
       - MYSQL_PASSWORD=ManageCredits__Password
-      - MYSQL_ROOT_PASSWORD=ManageCredits__Password
+      - MYSQL_DATABASE=ManageCredits
     ports:
-      - 8244:3306
+      - 8355:3306
     expose:
-      - 8244
+      - 8355
     volumes:
       - manage-credits-db:/var/lib/mysql
     networks:
