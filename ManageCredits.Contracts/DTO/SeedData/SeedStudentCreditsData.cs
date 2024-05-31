@@ -1,10 +1,11 @@
 using ManageCredits.Domain.Entities;
+using ManageCredits.Domain.Helpers;
 
 namespace ManageCredits.Contracts.DTO.SeedData;
 
 public class SeedStudentCreditsData
 {
-  public required ISeedDataCollection<TeacherEntity, TeacherEntity> Teachers { get; set; }
-  public required ISeedDataCollection<Guid, StudentEntity> Students { get; set; }
-  public required ISeedDataCollection<SubjectEntity, SubjectEntity> Subjects { get; set; }
+  public required SeedDataCollection<TeacherEntity> Teachers { get; set; }
+  public required SeedDataCollection<StudentEntity> Students { get; set; }
+  public required SeedDataCollection<SubjectEntity> Subjects { get; set; }
 }
