@@ -9,10 +9,10 @@ class SubjectConfig(ISeedData? seedData) : IEntityTypeConfiguration<SubjectEntit
 {
   public void Configure(EntityTypeBuilder<SubjectEntity> builder)
   {
-    builder.ToTable("Subject", "dbo")
+    builder.ToTable("Subject")
       .HasKey(key => key.SubjectId);
     builder.Property(property => property.SubjectId)
-      .HasDefaultValueSql("UUID()");
+      .HasDefaultValueSql("(UUID())");
     builder.Property(property => property.Name)
       .HasMaxLength(100)
       .IsUnicode(false)
@@ -20,12 +20,13 @@ class SubjectConfig(ISeedData? seedData) : IEntityTypeConfiguration<SubjectEntit
     builder.Property(property => property.Description)
       .HasColumnType("longtext");
     builder.Property(property => property.Created)
-      .HasDefaultValueSql("UTC_TIMESTAMP()");
+      .HasColumnType("timestamp")
+      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
       .IsRowVersion();
     builder.HasMany(many => many.Classes)
       .WithOne(one => one.Subject)
-      .HasForeignKey(key => key.SubjectId);
+      .HasForeignKey(key => key.ClassId);
     builder.HasIndex(index => new { index.Name })
       .IsUnique();
     if (seedData is not null)

@@ -3,6 +3,7 @@ using System;
 using ManageCredits.Infrastructure.Contexts.StudentCredits;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -19,17 +20,19 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           .HasAnnotation("ProductVersion", "8.0.6")
           .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+      MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+
       modelBuilder.Entity("ManageCredits.Domain.Entities.ClassEntity", b =>
           {
             b.Property<Guid>("ClassId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
-                      .HasDefaultValueSql("UUID()");
+                      .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
-                      .HasColumnType("datetime")
-                      .HasDefaultValueSql("UTC_TIMESTAMP()");
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("Description")
                       .HasColumnType("longtext");
@@ -43,18 +46,19 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("SubjectId")
                       .HasColumnType("char(36)");
 
-            b.Property<byte[]>("Version")
+            b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
-                      .IsRequired()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("longblob");
+                      .HasColumnType("timestamp(6)");
 
             b.HasKey("ClassId");
 
             b.HasIndex("Name")
                       .IsUnique();
 
-            b.ToTable("Class", "dbo");
+            b.HasIndex("SubjectId");
+
+            b.ToTable("Class", (string)null);
 
             b.HasData(
                       new
@@ -123,15 +127,15 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("StudentDetailId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
-                      .HasDefaultValueSql("UUID()");
+                      .HasDefaultValueSql("(UUID())");
 
             b.Property<Guid>("ClassId")
                       .HasColumnType("char(36)");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
-                      .HasColumnType("datetime")
-                      .HasDefaultValueSql("UTC_TIMESTAMP()");
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("Status")
                       .IsRequired()
@@ -144,11 +148,10 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("TeacherDetailId")
                       .HasColumnType("char(36)");
 
-            b.Property<byte[]>("Version")
+            b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
-                      .IsRequired()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("longblob");
+                      .HasColumnType("timestamp(6)");
 
             b.HasKey("StudentDetailId");
 
@@ -158,7 +161,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 
             b.HasIndex("TeacherDetailId");
 
-            b.ToTable("StudentDetail", "dbo");
+            b.ToTable("StudentDetail", (string)null);
 
             b.HasData(
                       new
@@ -167,7 +170,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("b96044ee-9bb6-4733-af11-1bd8eedf8b7d"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "Completed",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"),
                     TeacherDetailId = new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2")
                   },
                       new
@@ -176,7 +179,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("96437dd9-f3c7-4b11-a2a5-c59a0d5aed1c"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 3, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "Completed",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"),
                     TeacherDetailId = new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2")
                   },
                       new
@@ -185,7 +188,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("fe4f5476-b903-4399-b4d8-d97d9d3b1c22"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 4, 3, 2, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "Completed",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"),
                     TeacherDetailId = new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2")
                   },
                       new
@@ -194,7 +197,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("85f0c48a-7b2b-456a-95fb-8c6b827a719c"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "InProgress",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                     TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
                   },
                       new
@@ -203,7 +206,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("4905befb-9d92-42dd-8be3-82d761339b34"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 3, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "Completed",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                     TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
                   },
                       new
@@ -212,7 +215,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("c5bc16d1-1046-4b44-976a-564fc5df7d65"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 4, 3, 2, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "InProgress",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                     TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
                   },
                       new
@@ -221,7 +224,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("39537c6a-49d9-4496-a170-6e95d517ca81"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 5, 4, 3, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "InProgress",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                     TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
                   },
                       new
@@ -230,7 +233,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     ClassId = new Guid("a9a5f58a-2b02-4a0e-bf43-88a1080c82b4"),
                     Created = new DateTimeOffset(new DateTime(2024, 3, 6, 5, 4, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                     Status = "Pending",
-                    StudentId = new Guid("00000000-0000-0000-0000-000000000000"),
+                    StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                     TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
                   });
           });
@@ -240,12 +243,12 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("TeacherDetailId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
-                      .HasDefaultValueSql("UUID()");
+                      .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
-                      .HasColumnType("datetime")
-                      .HasDefaultValueSql("UTC_TIMESTAMP()");
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<Guid>("SubjectId")
                       .HasColumnType("char(36)");
@@ -257,11 +260,10 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                       .HasPrecision(2, 1)
                       .HasColumnType("decimal(2,1)");
 
-            b.Property<byte[]>("Version")
+            b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
-                      .IsRequired()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("longblob");
+                      .HasColumnType("timestamp(6)");
 
             b.HasKey("TeacherDetailId");
 
@@ -269,7 +271,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 
             b.HasIndex("TeacherId");
 
-            b.ToTable("TeacherDetail", "dbo");
+            b.ToTable("TeacherDetail", (string)null);
 
             b.HasData(
                       new
@@ -295,12 +297,12 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("StudentId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
-                      .HasDefaultValueSql("UUID()");
+                      .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
-                      .HasColumnType("datetime")
-                      .HasDefaultValueSql("UTC_TIMESTAMP()");
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("DocumentNumber")
                       .IsRequired()
@@ -324,18 +326,17 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                       .IsUnicode(false)
                       .HasColumnType("varchar(50)");
 
-            b.Property<byte[]>("Version")
+            b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
-                      .IsRequired()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("longblob");
+                      .HasColumnType("timestamp(6)");
 
             b.HasKey("StudentId");
 
             b.HasIndex("DocumentNumber", "Email")
                       .IsUnique();
 
-            b.ToTable("Student", "dbo");
+            b.ToTable("Student", (string)null);
 
             b.HasData(
                       new
@@ -363,12 +364,12 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("SubjectId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
-                      .HasDefaultValueSql("UUID()");
+                      .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
-                      .HasColumnType("datetime")
-                      .HasDefaultValueSql("UTC_TIMESTAMP()");
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("Description")
                       .HasColumnType("longtext");
@@ -379,18 +380,17 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                       .IsUnicode(false)
                       .HasColumnType("varchar(100)");
 
-            b.Property<byte[]>("Version")
+            b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
-                      .IsRequired()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("longblob");
+                      .HasColumnType("timestamp(6)");
 
             b.HasKey("SubjectId");
 
             b.HasIndex("Name")
                       .IsUnique();
 
-            b.ToTable("Subject", "dbo");
+            b.ToTable("Subject", (string)null);
 
             b.HasData(
                       new
@@ -414,12 +414,12 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("TeacherId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
-                      .HasDefaultValueSql("UUID()");
+                      .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
-                      .HasColumnType("datetime")
-                      .HasDefaultValueSql("UTC_TIMESTAMP()");
+                      .HasColumnType("timestamp")
+                      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("DocumentNumber")
                       .IsRequired()
@@ -449,18 +449,17 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                       .IsUnicode(false)
                       .HasColumnType("varchar(30)");
 
-            b.Property<byte[]>("Version")
+            b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
-                      .IsRequired()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("longblob");
+                      .HasColumnType("timestamp(6)");
 
             b.HasKey("TeacherId");
 
             b.HasIndex("DocumentNumber", "Email")
                       .IsUnique();
 
-            b.ToTable("Teacher", "dbo");
+            b.ToTable("Teacher", (string)null);
 
             b.HasData(
                       new
@@ -479,7 +478,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           {
             b.HasOne("ManageCredits.Domain.Entities.SubjectEntity", "Subject")
                       .WithMany("Classes")
-                      .HasForeignKey("ClassId")
+                      .HasForeignKey("SubjectId")
                       .OnDelete(DeleteBehavior.Cascade)
                       .IsRequired();
 

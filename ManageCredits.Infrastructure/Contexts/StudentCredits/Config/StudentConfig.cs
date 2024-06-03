@@ -11,10 +11,10 @@ class StudentConfig(ISeedData? seedData) : IEntityTypeConfiguration<StudentEntit
 {
   public void Configure(EntityTypeBuilder<StudentEntity> builder)
   {
-    builder.ToTable("Student", "dbo")
+    builder.ToTable("Student")
       .HasKey(key => key.StudentId);
     builder.Property(property => property.StudentId)
-      .HasDefaultValueSql("UUID()");
+      .HasDefaultValueSql("(UUID())");
     builder.Property(property => property.DocumentNumber)
       .IsRequired();
     builder.Property(property => property.Firstname)
@@ -30,7 +30,8 @@ class StudentConfig(ISeedData? seedData) : IEntityTypeConfiguration<StudentEntit
       .IsUnicode(false)
       .IsRequired();
     builder.Property(property => property.Created)
-      .HasDefaultValueSql("UTC_TIMESTAMP()");
+      .HasColumnType("timestamp")
+      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
       .IsRowVersion();
     builder.HasMany(many => many.Details)
@@ -48,16 +49,17 @@ class StudentDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Studen
 {
   public void Configure(EntityTypeBuilder<StudentDetailEntity> builder)
   {
-    builder.ToTable("StudentDetail", "dbo")
+    builder.ToTable("StudentDetail")
       .HasKey(key => key.StudentDetailId);
     builder.Property(property => property.StudentDetailId)
-      .HasDefaultValueSql("UUID()");
+      .HasDefaultValueSql("(UUID())");
     builder.Property(property => property.Status)
       .HasConversion(status => status.ToString(), status => (ClassStatus)Enum.Parse(typeof(ClassStatus), status))
       .HasMaxLength(10)
       .IsRequired();
     builder.Property(property => property.Created)
-      .HasDefaultValueSql("UTC_TIMESTAMP()");
+      .HasColumnType("timestamp")
+      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
       .IsRowVersion();
     builder.HasOne(one => one.TeacherDetail)

@@ -10,10 +10,10 @@ class TeacherConfig(ISeedData? seedData = null) : IEntityTypeConfiguration<Teach
 {
   public void Configure(EntityTypeBuilder<TeacherEntity> builder)
   {
-    builder.ToTable("Teacher", "dbo")
+    builder.ToTable("Teacher")
       .HasKey(key => key.TeacherId);
     builder.Property(property => property.TeacherId)
-      .HasDefaultValueSql("UUID()");
+      .HasDefaultValueSql("(UUID())");
     builder.Property(property => property.DocumentNumber)
       .IsRequired();
     builder.Property(property => property.Firstname)
@@ -33,7 +33,8 @@ class TeacherConfig(ISeedData? seedData = null) : IEntityTypeConfiguration<Teach
       .IsUnicode(false)
       .IsRequired();
     builder.Property(property => property.Created)
-      .HasDefaultValueSql("UTC_TIMESTAMP()");
+      .HasColumnType("timestamp")
+      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
       .IsRowVersion();
     builder.HasMany(many => many.Details)
@@ -51,15 +52,16 @@ class TeacherDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Teache
 {
   public void Configure(EntityTypeBuilder<TeacherDetailEntity> builder)
   {
-    builder.ToTable("TeacherDetail", "dbo")
+    builder.ToTable("TeacherDetail")
       .HasKey(key => key.TeacherDetailId);
     builder.Property(property => property.TeacherDetailId)
-      .HasDefaultValueSql("UUID()");
+      .HasDefaultValueSql("(UUID())");
     builder.Property(property => property.TotalCredits)
       .HasPrecision(2, 1)
       .IsRequired();
     builder.Property(property => property.Created)
-      .HasDefaultValueSql("UTC_TIMESTAMP()");
+      .HasColumnType("timestamp")
+      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
       .IsRowVersion();
     builder.HasOne(one => one.Teacher)
