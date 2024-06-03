@@ -17,163 +17,163 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.CreateTable(
-          name: "Student",
+          name: "student",
           columns: table => new
           {
-            StudentId = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
-            DocumentNumber = table.Column<string>(type: "varchar(255)", nullable: false)
+            student_id = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
+            document_number = table.Column<string>(type: "varchar(255)", nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Firstname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+            firstname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Lastname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+            lastname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+            email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
-            Version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
+            created_at = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
+            version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
           },
           constraints: table =>
           {
-            table.PrimaryKey("PK_Student", x => x.StudentId);
+            table.PrimaryKey("PK_student", x => x.student_id);
           })
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.CreateTable(
-          name: "Subject",
+          name: "subject",
           columns: table => new
           {
-            SubjectId = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
-            Name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+            subject_id = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
+            name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Description = table.Column<string>(type: "longtext", nullable: true)
+            description = table.Column<string>(type: "longtext", nullable: true)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
-            Version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
+            created_at = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
+            version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
           },
           constraints: table =>
           {
-            table.PrimaryKey("PK_Subject", x => x.SubjectId);
+            table.PrimaryKey("PK_subject", x => x.subject_id);
           })
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.CreateTable(
-          name: "Teacher",
+          name: "teacher",
           columns: table => new
           {
-            TeacherId = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
-            DocumentNumber = table.Column<string>(type: "varchar(255)", nullable: false)
+            teacher_id = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
+            document_number = table.Column<string>(type: "varchar(255)", nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Firstname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+            firstname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Lastname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
+            lastname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+            email = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Profession = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false)
+            profession = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
-            Version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
+            created_at = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
+            version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
           },
           constraints: table =>
           {
-            table.PrimaryKey("PK_Teacher", x => x.TeacherId);
+            table.PrimaryKey("PK_teacher", x => x.teacher_id);
           })
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.CreateTable(
-          name: "Class",
+          name: "class",
           columns: table => new
           {
-            ClassId = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
-            SubjectId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-            Name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+            class_id = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
+            subject_id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+            name = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Description = table.Column<string>(type: "longtext", nullable: true)
+            description = table.Column<string>(type: "longtext", nullable: true)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
-            Version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
+            created_at = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
+            version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
           },
           constraints: table =>
           {
-            table.PrimaryKey("PK_Class", x => x.ClassId);
+            table.PrimaryKey("PK_class", x => x.class_id);
             table.ForeignKey(
-                      name: "FK_Class_Subject_SubjectId",
-                      column: x => x.SubjectId,
-                      principalTable: "Subject",
-                      principalColumn: "SubjectId",
+                      name: "FK_class_subject_subject_id",
+                      column: x => x.subject_id,
+                      principalTable: "subject",
+                      principalColumn: "subject_id",
                       onDelete: ReferentialAction.Cascade);
           })
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.CreateTable(
-          name: "TeacherDetail",
+          name: "teacher_detail",
           columns: table => new
           {
-            TeacherDetailId = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
-            TeacherId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-            SubjectId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-            TotalCredits = table.Column<decimal>(type: "decimal(2,1)", precision: 2, scale: 1, nullable: false),
-            Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
-            Version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
+            teacher_detail_id = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
+            teacher_id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+            subject_id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+            total_credits = table.Column<decimal>(type: "decimal(2,1)", precision: 2, scale: 1, nullable: false),
+            created_at = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
+            version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
           },
           constraints: table =>
           {
-            table.PrimaryKey("PK_TeacherDetail", x => x.TeacherDetailId);
+            table.PrimaryKey("PK_teacher_detail", x => x.teacher_detail_id);
             table.ForeignKey(
-                      name: "FK_TeacherDetail_Subject_SubjectId",
-                      column: x => x.SubjectId,
-                      principalTable: "Subject",
-                      principalColumn: "SubjectId",
+                      name: "FK_teacher_detail_subject_subject_id",
+                      column: x => x.subject_id,
+                      principalTable: "subject",
+                      principalColumn: "subject_id",
                       onDelete: ReferentialAction.Cascade);
             table.ForeignKey(
-                      name: "FK_TeacherDetail_Teacher_TeacherId",
-                      column: x => x.TeacherId,
-                      principalTable: "Teacher",
-                      principalColumn: "TeacherId",
+                      name: "FK_teacher_detail_teacher_teacher_id",
+                      column: x => x.teacher_id,
+                      principalTable: "teacher",
+                      principalColumn: "teacher_id",
                       onDelete: ReferentialAction.Cascade);
           })
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.CreateTable(
-          name: "StudentDetail",
+          name: "student_detail",
           columns: table => new
           {
-            StudentDetailId = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
-            TeacherDetailId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-            StudentId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-            ClassId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-            Status = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
+            student_detail_id = table.Column<Guid>(type: "char(36)", nullable: false, defaultValueSql: "(UUID())", collation: "ascii_general_ci"),
+            teacher_detail_id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+            student_id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+            class_id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+            status = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false)
                   .Annotation("MySql:CharSet", "utf8mb4"),
-            Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
-            Version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
+            created_at = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "(CURRENT_TIMESTAMP)"),
+            version = table.Column<DateTime>(type: "timestamp(6)", rowVersion: true, nullable: false)
           },
           constraints: table =>
           {
-            table.PrimaryKey("PK_StudentDetail", x => x.StudentDetailId);
+            table.PrimaryKey("PK_student_detail", x => x.student_detail_id);
             table.ForeignKey(
-                      name: "FK_StudentDetail_Class_ClassId",
-                      column: x => x.ClassId,
-                      principalTable: "Class",
-                      principalColumn: "ClassId",
+                      name: "FK_student_detail_class_class_id",
+                      column: x => x.class_id,
+                      principalTable: "class",
+                      principalColumn: "class_id",
                       onDelete: ReferentialAction.Cascade);
             table.ForeignKey(
-                      name: "FK_StudentDetail_Student_StudentId",
-                      column: x => x.StudentId,
-                      principalTable: "Student",
-                      principalColumn: "StudentId",
+                      name: "FK_student_detail_student_student_id",
+                      column: x => x.student_id,
+                      principalTable: "student",
+                      principalColumn: "student_id",
                       onDelete: ReferentialAction.Cascade);
             table.ForeignKey(
-                      name: "FK_StudentDetail_TeacherDetail_TeacherDetailId",
-                      column: x => x.TeacherDetailId,
-                      principalTable: "TeacherDetail",
-                      principalColumn: "TeacherDetailId",
+                      name: "FK_student_detail_teacher_detail_teacher_detail_id",
+                      column: x => x.teacher_detail_id,
+                      principalTable: "teacher_detail",
+                      principalColumn: "teacher_detail_id",
                       onDelete: ReferentialAction.Cascade);
           })
           .Annotation("MySql:CharSet", "utf8mb4");
 
       migrationBuilder.InsertData(
-          table: "Student",
-          columns: new[] { "StudentId", "Created", "DocumentNumber", "Email", "Firstname", "Lastname" },
+          table: "student",
+          columns: new[] { "student_id", "created_at", "document_number", "email", "firstname", "lastname" },
           values: new object[,]
           {
                     { new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"), new DateTimeOffset(new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "1109432112", "jeison.bonilla@gmail.com", "Jeison Andrés", "Bonilla" },
@@ -181,8 +181,8 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           });
 
       migrationBuilder.InsertData(
-          table: "Subject",
-          columns: new[] { "SubjectId", "Created", "Description", "Name" },
+          table: "subject",
+          columns: new[] { "subject_id", "created_at", "description", "name" },
           values: new object[,]
           {
                     { new Guid("2ee9ebee-460c-4389-a50b-f0b602a2f617"), new DateTimeOffset(new DateTime(2024, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Learn to identify system problems with a general, reusable, scalable and applicable solution", "Design Patterns" },
@@ -190,13 +190,13 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           });
 
       migrationBuilder.InsertData(
-          table: "Teacher",
-          columns: new[] { "TeacherId", "Created", "DocumentNumber", "Email", "Firstname", "Lastname", "Profession" },
+          table: "teacher",
+          columns: new[] { "teacher_id", "created_at", "document_number", "email", "firstname", "lastname", "profession" },
           values: new object[] { new Guid("d3e5862d-3c30-4b35-8a0d-4632572aae47"), new DateTimeOffset(new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "1023944678", "cristian10camilo95@gmail.com", "Cristian Camilo", "Bonilla", "Senior Software Developer" });
 
       migrationBuilder.InsertData(
-          table: "Class",
-          columns: new[] { "ClassId", "Created", "Description", "Name", "SubjectId" },
+          table: "class",
+          columns: new[] { "class_id", "created_at", "description", "name", "subject_id" },
           values: new object[,]
           {
                     { new Guid("39537c6a-49d9-4496-a170-6e95d517ca81"), new DateTimeOffset(new DateTime(2024, 1, 19, 4, 3, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), null, "Interface Segregation Principle", new Guid("8a4b2308-49d0-44db-b2d5-675742d5f2fe") },
@@ -210,8 +210,8 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           });
 
       migrationBuilder.InsertData(
-          table: "TeacherDetail",
-          columns: new[] { "TeacherDetailId", "Created", "SubjectId", "TeacherId", "TotalCredits" },
+          table: "teacher_detail",
+          columns: new[] { "teacher_detail_id", "created_at", "subject_id", "teacher_id", "total_credits" },
           values: new object[,]
           {
                     { new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046"), new DateTimeOffset(new DateTime(2024, 2, 3, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), new Guid("8a4b2308-49d0-44db-b2d5-675742d5f2fe"), new Guid("d3e5862d-3c30-4b35-8a0d-4632572aae47"), 3.0m },
@@ -219,8 +219,8 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           });
 
       migrationBuilder.InsertData(
-          table: "StudentDetail",
-          columns: new[] { "StudentDetailId", "ClassId", "Created", "Status", "StudentId", "TeacherDetailId" },
+          table: "student_detail",
+          columns: new[] { "student_detail_id", "class_id", "created_at", "status", "student_id", "teacher_detail_id" },
           values: new object[,]
           {
                     { new Guid("11ab0e13-3a0a-4fd7-9f80-3dc89b181efb"), new Guid("b96044ee-9bb6-4733-af11-1bd8eedf8b7d"), new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)), "Completed", new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"), new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2") },
@@ -234,80 +234,80 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
           });
 
       migrationBuilder.CreateIndex(
-          name: "IX_Class_Name",
-          table: "Class",
-          column: "Name",
+          name: "IX_class_name",
+          table: "class",
+          column: "name",
           unique: true);
 
       migrationBuilder.CreateIndex(
-          name: "IX_Class_SubjectId",
-          table: "Class",
-          column: "SubjectId");
+          name: "IX_class_subject_id",
+          table: "class",
+          column: "subject_id");
 
       migrationBuilder.CreateIndex(
-          name: "IX_Student_DocumentNumber_Email",
-          table: "Student",
-          columns: new[] { "DocumentNumber", "Email" },
+          name: "IX_student_document_number_email",
+          table: "student",
+          columns: new[] { "document_number", "email" },
           unique: true);
 
       migrationBuilder.CreateIndex(
-          name: "IX_StudentDetail_ClassId",
-          table: "StudentDetail",
-          column: "ClassId");
+          name: "IX_student_detail_class_id",
+          table: "student_detail",
+          column: "class_id");
 
       migrationBuilder.CreateIndex(
-          name: "IX_StudentDetail_StudentId",
-          table: "StudentDetail",
-          column: "StudentId");
+          name: "IX_student_detail_student_id",
+          table: "student_detail",
+          column: "student_id");
 
       migrationBuilder.CreateIndex(
-          name: "IX_StudentDetail_TeacherDetailId",
-          table: "StudentDetail",
-          column: "TeacherDetailId");
+          name: "IX_student_detail_teacher_detail_id",
+          table: "student_detail",
+          column: "teacher_detail_id");
 
       migrationBuilder.CreateIndex(
-          name: "IX_Subject_Name",
-          table: "Subject",
-          column: "Name",
+          name: "IX_subject_name",
+          table: "subject",
+          column: "name",
           unique: true);
 
       migrationBuilder.CreateIndex(
-          name: "IX_Teacher_DocumentNumber_Email",
-          table: "Teacher",
-          columns: new[] { "DocumentNumber", "Email" },
+          name: "IX_teacher_document_number_email",
+          table: "teacher",
+          columns: new[] { "document_number", "email" },
           unique: true);
 
       migrationBuilder.CreateIndex(
-          name: "IX_TeacherDetail_SubjectId",
-          table: "TeacherDetail",
-          column: "SubjectId");
+          name: "IX_teacher_detail_subject_id",
+          table: "teacher_detail",
+          column: "subject_id");
 
       migrationBuilder.CreateIndex(
-          name: "IX_TeacherDetail_TeacherId",
-          table: "TeacherDetail",
-          column: "TeacherId");
+          name: "IX_teacher_detail_teacher_id",
+          table: "teacher_detail",
+          column: "teacher_id");
     }
 
     /// <inheritdoc />
     protected override void Down(MigrationBuilder migrationBuilder)
     {
       migrationBuilder.DropTable(
-          name: "StudentDetail");
+          name: "student_detail");
 
       migrationBuilder.DropTable(
-          name: "Class");
+          name: "class");
 
       migrationBuilder.DropTable(
-          name: "Student");
+          name: "student");
 
       migrationBuilder.DropTable(
-          name: "TeacherDetail");
+          name: "teacher_detail");
 
       migrationBuilder.DropTable(
-          name: "Subject");
+          name: "subject");
 
       migrationBuilder.DropTable(
-          name: "Teacher");
+          name: "teacher");
     }
   }
 }

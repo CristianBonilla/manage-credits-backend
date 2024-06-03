@@ -11,28 +11,35 @@ class StudentConfig(ISeedData? seedData) : IEntityTypeConfiguration<StudentEntit
 {
   public void Configure(EntityTypeBuilder<StudentEntity> builder)
   {
-    builder.ToTable("Student")
+    builder.ToTable("student")
       .HasKey(key => key.StudentId);
     builder.Property(property => property.StudentId)
+      .HasColumnName("student_id")
       .HasDefaultValueSql("(UUID())");
     builder.Property(property => property.DocumentNumber)
+      .HasColumnName("document_number")
       .IsRequired();
     builder.Property(property => property.Firstname)
+      .HasColumnName("firstname")
       .HasMaxLength(50)
       .IsUnicode(false)
       .IsRequired();
     builder.Property(property => property.Lastname)
+      .HasColumnName("lastname")
       .HasMaxLength(50)
       .IsUnicode(false)
       .IsRequired();
     builder.Property(property => property.Email)
+      .HasColumnName("email")
       .HasMaxLength(100)
       .IsUnicode(false)
       .IsRequired();
     builder.Property(property => property.Created)
+      .HasColumnName("created_at")
       .HasColumnType("timestamp")
       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
+      .HasColumnName("version")
       .IsRowVersion();
     builder.HasMany(many => many.Details)
       .WithOne(one => one.Student)
@@ -49,18 +56,28 @@ class StudentDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Studen
 {
   public void Configure(EntityTypeBuilder<StudentDetailEntity> builder)
   {
-    builder.ToTable("StudentDetail")
+    builder.ToTable("student_detail")
       .HasKey(key => key.StudentDetailId);
     builder.Property(property => property.StudentDetailId)
+      .HasColumnName("student_detail_id")
       .HasDefaultValueSql("(UUID())");
+    builder.Property(property => property.TeacherDetailId)
+      .HasColumnName("teacher_detail_id");
+    builder.Property(property => property.StudentId)
+      .HasColumnName("student_id");
+    builder.Property(property => property.ClassId)
+      .HasColumnName("class_id");
     builder.Property(property => property.Status)
+      .HasColumnName("status")
       .HasConversion(status => status.ToString(), status => (ClassStatus)Enum.Parse(typeof(ClassStatus), status))
       .HasMaxLength(10)
       .IsRequired();
     builder.Property(property => property.Created)
+      .HasColumnName("created_at")
       .HasColumnType("timestamp")
       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
     builder.Property(property => property.Version)
+      .HasColumnName("version")
       .IsRowVersion();
     builder.HasOne(one => one.TeacherDetail)
       .WithMany()

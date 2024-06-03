@@ -27,29 +27,35 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("ClassId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
+                      .HasColumnName("class_id")
                       .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("timestamp")
+                      .HasColumnName("created_at")
                       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("Description")
-                      .HasColumnType("longtext");
+                      .HasColumnType("longtext")
+                      .HasColumnName("description");
 
             b.Property<string>("Name")
                       .IsRequired()
                       .HasMaxLength(100)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(100)");
+                      .HasColumnType("varchar(100)")
+                      .HasColumnName("name");
 
             b.Property<Guid>("SubjectId")
-                      .HasColumnType("char(36)");
+                      .HasColumnType("char(36)")
+                      .HasColumnName("subject_id");
 
             b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("timestamp(6)");
+                      .HasColumnType("timestamp(6)")
+                      .HasColumnName("version");
 
             b.HasKey("ClassId");
 
@@ -58,7 +64,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 
             b.HasIndex("SubjectId");
 
-            b.ToTable("Class", (string)null);
+            b.ToTable("class", (string)null);
 
             b.HasData(
                       new
@@ -127,31 +133,38 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("StudentDetailId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
+                      .HasColumnName("student_detail_id")
                       .HasDefaultValueSql("(UUID())");
 
             b.Property<Guid>("ClassId")
-                      .HasColumnType("char(36)");
+                      .HasColumnType("char(36)")
+                      .HasColumnName("class_id");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("timestamp")
+                      .HasColumnName("created_at")
                       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("Status")
                       .IsRequired()
                       .HasMaxLength(10)
-                      .HasColumnType("varchar(10)");
+                      .HasColumnType("varchar(10)")
+                      .HasColumnName("status");
 
             b.Property<Guid>("StudentId")
-                      .HasColumnType("char(36)");
+                      .HasColumnType("char(36)")
+                      .HasColumnName("student_id");
 
             b.Property<Guid>("TeacherDetailId")
-                      .HasColumnType("char(36)");
+                      .HasColumnType("char(36)")
+                      .HasColumnName("teacher_detail_id");
 
             b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("timestamp(6)");
+                      .HasColumnType("timestamp(6)")
+                      .HasColumnName("version");
 
             b.HasKey("StudentDetailId");
 
@@ -161,7 +174,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 
             b.HasIndex("TeacherDetailId");
 
-            b.ToTable("StudentDetail", (string)null);
+            b.ToTable("student_detail", (string)null);
 
             b.HasData(
                       new
@@ -243,27 +256,33 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("TeacherDetailId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
+                      .HasColumnName("teacher_detail_id")
                       .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("timestamp")
+                      .HasColumnName("created_at")
                       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<Guid>("SubjectId")
-                      .HasColumnType("char(36)");
+                      .HasColumnType("char(36)")
+                      .HasColumnName("subject_id");
 
             b.Property<Guid>("TeacherId")
-                      .HasColumnType("char(36)");
+                      .HasColumnType("char(36)")
+                      .HasColumnName("teacher_id");
 
             b.Property<decimal>("TotalCredits")
                       .HasPrecision(2, 1)
-                      .HasColumnType("decimal(2,1)");
+                      .HasColumnType("decimal(2,1)")
+                      .HasColumnName("total_credits");
 
             b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("timestamp(6)");
+                      .HasColumnType("timestamp(6)")
+                      .HasColumnName("version");
 
             b.HasKey("TeacherDetailId");
 
@@ -271,7 +290,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 
             b.HasIndex("TeacherId");
 
-            b.ToTable("TeacherDetail", (string)null);
+            b.ToTable("teacher_detail", (string)null);
 
             b.HasData(
                       new
@@ -297,46 +316,53 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("StudentId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
+                      .HasColumnName("student_id")
                       .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("timestamp")
+                      .HasColumnName("created_at")
                       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("DocumentNumber")
                       .IsRequired()
-                      .HasColumnType("varchar(255)");
+                      .HasColumnType("varchar(255)")
+                      .HasColumnName("document_number");
 
             b.Property<string>("Email")
                       .IsRequired()
                       .HasMaxLength(100)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(100)");
+                      .HasColumnType("varchar(100)")
+                      .HasColumnName("email");
 
             b.Property<string>("Firstname")
                       .IsRequired()
                       .HasMaxLength(50)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(50)");
+                      .HasColumnType("varchar(50)")
+                      .HasColumnName("firstname");
 
             b.Property<string>("Lastname")
                       .IsRequired()
                       .HasMaxLength(50)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(50)");
+                      .HasColumnType("varchar(50)")
+                      .HasColumnName("lastname");
 
             b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("timestamp(6)");
+                      .HasColumnType("timestamp(6)")
+                      .HasColumnName("version");
 
             b.HasKey("StudentId");
 
             b.HasIndex("DocumentNumber", "Email")
                       .IsUnique();
 
-            b.ToTable("Student", (string)null);
+            b.ToTable("student", (string)null);
 
             b.HasData(
                       new
@@ -364,33 +390,38 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("SubjectId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
+                      .HasColumnName("subject_id")
                       .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("timestamp")
+                      .HasColumnName("created_at")
                       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("Description")
-                      .HasColumnType("longtext");
+                      .HasColumnType("longtext")
+                      .HasColumnName("description");
 
             b.Property<string>("Name")
                       .IsRequired()
                       .HasMaxLength(100)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(100)");
+                      .HasColumnType("varchar(100)")
+                      .HasColumnName("name");
 
             b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("timestamp(6)");
+                      .HasColumnType("timestamp(6)")
+                      .HasColumnName("version");
 
             b.HasKey("SubjectId");
 
             b.HasIndex("Name")
                       .IsUnique();
 
-            b.ToTable("Subject", (string)null);
+            b.ToTable("subject", (string)null);
 
             b.HasData(
                       new
@@ -414,52 +445,60 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
             b.Property<Guid>("TeacherId")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("char(36)")
+                      .HasColumnName("teacher_id")
                       .HasDefaultValueSql("(UUID())");
 
             b.Property<DateTimeOffset>("Created")
                       .ValueGeneratedOnAdd()
                       .HasColumnType("timestamp")
+                      .HasColumnName("created_at")
                       .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
             b.Property<string>("DocumentNumber")
                       .IsRequired()
-                      .HasColumnType("varchar(255)");
+                      .HasColumnType("varchar(255)")
+                      .HasColumnName("document_number");
 
             b.Property<string>("Email")
                       .IsRequired()
                       .HasMaxLength(100)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(100)");
+                      .HasColumnType("varchar(100)")
+                      .HasColumnName("email");
 
             b.Property<string>("Firstname")
                       .IsRequired()
                       .HasMaxLength(50)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(50)");
+                      .HasColumnType("varchar(50)")
+                      .HasColumnName("firstname");
 
             b.Property<string>("Lastname")
                       .IsRequired()
                       .HasMaxLength(50)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(50)");
+                      .HasColumnType("varchar(50)")
+                      .HasColumnName("lastname");
 
             b.Property<string>("Profession")
                       .IsRequired()
                       .HasMaxLength(30)
                       .IsUnicode(false)
-                      .HasColumnType("varchar(30)");
+                      .HasColumnType("varchar(30)")
+                      .HasColumnName("profession");
 
             b.Property<DateTime>("Version")
                       .IsConcurrencyToken()
                       .ValueGeneratedOnAddOrUpdate()
-                      .HasColumnType("timestamp(6)");
+                      .HasColumnType("timestamp(6)")
+                      .HasColumnName("version");
 
             b.HasKey("TeacherId");
 
             b.HasIndex("DocumentNumber", "Email")
                       .IsUnique();
 
-            b.ToTable("Teacher", (string)null);
+            b.ToTable("teacher", (string)null);
 
             b.HasData(
                       new
