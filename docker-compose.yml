@@ -23,11 +23,10 @@ services:
     container_name: manage-credits-DB
     hostname: mysql
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=1
-      # - MYSQL_ROOT_PASSWORD=ManageCredits__Password
+      # - MYSQL_RANDOM_ROOT_PASSWORD=1
+      - MYSQL_ROOT_PASSWORD=ManageCredits__Password
       - MYSQL_USER=credits
       - MYSQL_PASSWORD=ManageCredits__Password
-      - MYSQL_DATABASE=ManageCredits
     ports:
       - 8355:3306
     expose:

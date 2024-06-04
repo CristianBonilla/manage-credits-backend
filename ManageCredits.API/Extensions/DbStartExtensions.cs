@@ -1,6 +1,6 @@
+using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using MySql.Data.MySqlClient;
 
 namespace ManageCredits.API.Extensions;
 
@@ -39,10 +39,10 @@ static class DbStartExtensions
           delay = 0;
         }
       }
-      catch (MySqlException ex)
+      catch (Exception exception) when (exception is InvalidOperationException || exception is DbException)
       {
         await Task.Delay(TimeSpan.FromSeconds(1));
-        Console.WriteLine($"{++delay} seconds have passed Connecting...");
+        Console.WriteLine($"{++delay} seconds have passed, an error occurred, retrying. Connecting...");
         await Connect(start);
       }
     }
