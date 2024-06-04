@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 {
     [DbContext(typeof(StudentCreditsContext))]
-    [Migration("20240603185531_InitialCreate")]
+    [Migration("20240604091926_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
