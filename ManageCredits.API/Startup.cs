@@ -18,6 +18,7 @@ class Startup(IConfiguration configuration, IWebHostEnvironment env)
   public static void ConfigureContainer(ContainerBuilder builder)
   {
     builder.RegisterModule<DbModule>();
+    builder.RegisterModule<RepositoriesModule>();
   }
 
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
