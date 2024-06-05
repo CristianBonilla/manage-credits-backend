@@ -19,6 +19,7 @@ class Startup(IConfiguration configuration, IWebHostEnvironment env)
   {
     builder.RegisterModule<DbModule>();
     builder.RegisterModule<RepositoriesModule>();
+    builder.RegisterModule<StudentCreditsModule>();
   }
 
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
