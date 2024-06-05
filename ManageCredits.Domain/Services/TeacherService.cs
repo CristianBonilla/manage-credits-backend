@@ -61,6 +61,13 @@ public class TeacherService(
     return classObj;
   }
 
+  public Task<TeacherEntity> GetTeacher(Guid teacherId)
+  {
+    TeacherEntity teacher = _teacherRepository.Find(teacher => teacher.TeacherId == teacherId) ?? throw new ServiceErrorException(HttpStatusCode.NotFound, $"Teacher not found with related identifier \"{teacherId}\"");
+
+    return Task.FromResult(teacher);
+  }
+
   public IAsyncEnumerable<TeacherEntity> GetTeachers() => _teacherRepository.GetAll(teacher => teacher.OrderBy(order => order.Firstname).ThenBy(order => order.Lastname)).ToAsyncEnumerable();
 
   public IAsyncEnumerable<SubjectEntity> GetSubjectsByTeacherId(Guid teacherId)

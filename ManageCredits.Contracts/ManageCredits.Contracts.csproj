@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ManageCredits.Domain.Entities\ManageCredits.Domain.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
 </Project>
