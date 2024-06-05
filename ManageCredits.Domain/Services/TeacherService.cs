@@ -63,7 +63,7 @@ public class TeacherService(
 
   public Task<TeacherEntity> GetTeacher(Guid teacherId)
   {
-    TeacherEntity teacher = _teacherRepository.Find(teacher => teacher.TeacherId == teacherId) ?? throw new ServiceErrorException(HttpStatusCode.NotFound, $"Teacher not found with related identifier \"{teacherId}\"");
+    TeacherEntity teacher = _teacherRepository.Find([teacherId]) ?? throw new ServiceErrorException(HttpStatusCode.NotFound, $"Teacher not found with related identifier \"{teacherId}\"");
 
     return Task.FromResult(teacher);
   }

@@ -14,13 +14,17 @@ public class StudentService(
   IStudentCreditsRepositoryContext context,
   IStudentRepository studentRepository,
   IStudentDetailRepository studentDetailRepository,
+  ITeacherRepository teacherRepository,
   ITeacherDetailRepository teacherDetailRepository,
+  ISubjectRepository subjectRepository,
   IClassRepository classRepository) : IStudentService
 {
   readonly IStudentCreditsRepositoryContext _context = context;
   readonly IStudentRepository _studentRepository = studentRepository;
   readonly IStudentDetailRepository _studentDetailRepository = studentDetailRepository;
+  readonly ITeacherRepository _teacherRepository = teacherRepository;
   readonly ITeacherDetailRepository _teacherDetailRepository = teacherDetailRepository;
+  readonly ISubjectRepository _subjectRepository = subjectRepository;
   readonly IClassRepository _classRepository = classRepository;
 
   public async Task<(StudentEntity, IEnumerable<StudentDetailEntity>)> AddStudent(StudentEntity student, params Guid[] subjectIDs)
@@ -85,6 +89,24 @@ public class StudentService(
         detail => detail.Student)
           .Select(detail => $"{detail.Student.Firstname} {detail.Student.Lastname}")
           .ToAsyncEnumerable();
+
+  public async IAsyncEnumerable<(TeacherEntity, StudentEntity, StudentDetailEntity, SubjectEntity, ClassEntity)> GetStudents()
+  {
+    var students = _studentRepository.GetAll().ToAsyncEnumerable();
+    await foreach (StudentEntity student in students)
+    {
+      var details = _studentDetailRepository.GetByFilter(detail => detail.StudentId == student.StudentId).ToAsyncEnumerable();
+      await foreach (StudentDetailEntity detail in details)
+      {
+        TeacherDetailEntity teacherDetail = _teacherDetailRepository.Find([detail.TeacherDetailId])!;
+        TeacherEntity teacher = _teacherRepository.Find([teacherDetail.TeacherId])!;
+        ClassEntity classObj = _classRepository.Find([detail.ClassId])!;
+        SubjectEntity subject = _subjectRepository.Find([classObj.SubjectId])!;
+
+        yield return (teacher, student, detail, subject, classObj);
+      }
+    }
+  }
 
   private (Guid SubjectId, Guid TeacherDetailId) GetTeacherDetailIdBySubjectId(Guid subjectId)
   {
