@@ -90,20 +90,26 @@ public class StudentService(
           .Select(detail => $"{detail.Student.Firstname} {detail.Student.Lastname}")
           .ToAsyncEnumerable();
 
-  public async IAsyncEnumerable<(TeacherEntity, StudentEntity, StudentDetailEntity, SubjectEntity, ClassEntity)> GetStudents()
+  public async IAsyncEnumerable<(TeacherEntity, StudentEntity, SubjectEntity, ClassStatus, decimal)> GetStudents()
   {
-    var students = _studentRepository.GetAll().ToAsyncEnumerable();
-    await foreach (StudentEntity student in students)
+    var teacherDetails = _teacherDetailRepository.GetAll().ToAsyncEnumerable();
+    await foreach (TeacherDetailEntity teacherDetail in teacherDetails)
     {
-      var details = _studentDetailRepository.GetByFilter(detail => detail.StudentId == student.StudentId).ToAsyncEnumerable();
+      TeacherEntity teacher = _teacherRepository.Find([teacherDetail.TeacherId])!;
+      SubjectEntity subject = _subjectRepository.Find([teacherDetail.SubjectId])!;
+      var details = _studentDetailRepository.GetByFilter(
+        detail => detail.TeacherDetailId == teacherDetail.TeacherDetailId &&
+        _classRepository.Exists(classObj => classObj.ClassId == detail.ClassId && classObj.SubjectId == teacherDetail.SubjectId),
+        detail => detail.OrderBy(order => order.Student.DocumentNumber),
+        detail => detail.Student)
+        .ToAsyncEnumerable();
       await foreach (StudentDetailEntity detail in details)
       {
-        TeacherDetailEntity teacherDetail = _teacherDetailRepository.Find([detail.TeacherDetailId])!;
-        TeacherEntity teacher = _teacherRepository.Find([teacherDetail.TeacherId])!;
-        ClassEntity classObj = _classRepository.Find([detail.ClassId])!;
-        SubjectEntity subject = _subjectRepository.Find([classObj.SubjectId])!;
+        StudentEntity student = _studentRepository.Find(student => student.StudentId == detail.StudentId)!;
+        decimal credits = await GetCreditsByStudentId(student.StudentId);
+        ClassStatus status = credits == TeacherCommonValues.TOTAL_CREDITS ? ClassStatus.Completed : credits > 0 && credits < TeacherCommonValues.TOTAL_CREDITS ? ClassStatus.InProgress : ClassStatus.Pending;
 
-        yield return (teacher, student, detail, subject, classObj);
+        yield return (teacher, student, subject, status, credits);
       }
     }
   }

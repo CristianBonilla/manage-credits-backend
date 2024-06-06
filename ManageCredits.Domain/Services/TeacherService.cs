@@ -19,7 +19,6 @@ public class TeacherService(
   ISubjectRepository subjectRepository,
   IClassRepository classRepository) : ITeacherService
 {
-  const decimal TOTAL_CREDITS = 3.0M;
   readonly IStudentCreditsRepositoryContext _context = context;
   readonly ITeacherRepository _teacherRepository = teacherRepository;
   readonly ITeacherDetailRepository _teacherDetailRepository = teacherDetailRepository;
@@ -85,6 +84,6 @@ public class TeacherService(
         {
           TeacherId = teacherId,
           SubjectId = subjectId,
-          TotalCredits = TOTAL_CREDITS
+          TotalCredits = TeacherCommonValues.TOTAL_CREDITS
         });
 }

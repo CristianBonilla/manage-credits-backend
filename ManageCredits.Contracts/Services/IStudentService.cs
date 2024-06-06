@@ -11,5 +11,5 @@ public interface IStudentService
   ValueTask<decimal> GetCreditsByClassId(Guid studentId, Guid classId);
   ValueTask<decimal> GetCreditsByStudentId(Guid studentId);
   IAsyncEnumerable<string> GetStudentNamesByClassId(Guid classId, Guid exceptStudentId);
-  IAsyncEnumerable<(TeacherEntity, StudentEntity, StudentDetailEntity, SubjectEntity, ClassEntity)> GetStudents();
+  IAsyncEnumerable<(TeacherEntity, StudentEntity, SubjectEntity, ClassStatus, decimal)> GetStudents();
 }
