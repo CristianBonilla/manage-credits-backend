@@ -6,6 +6,7 @@ using ManageCredits.Contracts.DTO.Student;
 using ManageCredits.Contracts.DTO.Subject;
 using ManageCredits.Contracts.DTO.Teacher;
 using ManageCredits.Domain.Entities;
+using ManageCredits.Domain.Entities.Details;
 using ManageCredits.Domain.Helpers;
 
 namespace ManageCredits.API.Mappers.Profiles;
@@ -20,6 +21,8 @@ public class StudentCreditsProfile : Profile
       .ForMember(member => member.Created, options => options.Ignore())
       .ForMember(member => member.Version, options => options.Ignore());
     CreateMap<TeacherEntity, TeacherResponse>();
+    CreateMap<TeacherEntity, TeacherDetailResponse>()
+      .ForMember(member => member.Subjects, options => options.Ignore());
     CreateMap<StudentRequest, StudentEntity>()
       .ForMember(member => member.StudentId, options => options.Ignore())
       .ForMember(member => member.Details, options => options.Ignore())
@@ -32,6 +35,8 @@ public class StudentCreditsProfile : Profile
       .ForMember(member => member.Created, options => options.Ignore())
       .ForMember(member => member.Version, options => options.Ignore());
     CreateMap<SubjectEntity, SubjectResponse>();
+    CreateMap<SubjectEntity, SubjectDetailResponse>()
+      .ForMember(member => member.TotalCredits, options => options.Ignore());
     CreateMap<ClassRequest, ClassEntity>()
       .ForMember(member => member.ClassId, options => options.Ignore())
       .ForMember(member => member.Subject, options => options.Ignore())
@@ -39,5 +44,7 @@ public class StudentCreditsProfile : Profile
       .ForMember(member => member.Version, options => options.Ignore());
     CreateMap<IAsyncEnumerable<(TeacherEntity, StudentEntity, SubjectEntity, ClassStatus, decimal)>, IAsyncEnumerable<StudentCreditsFilter>>()
       .ConvertUsing<StudentCreditsConverter>();
+    CreateMap<(TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details), TeacherDetailResponse>()
+      .ConvertUsing<TeacherDetailConverter>();
   }
 }
