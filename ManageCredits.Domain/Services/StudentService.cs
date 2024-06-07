@@ -129,7 +129,8 @@ public class StudentService(
             TeacherDetailId = teacherDetailId,
             StudentId = studentId,
             ClassId = classObj.ClassId,
-            Status = ClassStatus.Pending
+            Status = ClassStatus.Pending,
+            Class = classObj
           });
 
   private int GetTotalClassesBySubjectId(Guid subjectId) => _classRepository.GetByFilter(classObj => classObj.SubjectId == subjectId).Count();
