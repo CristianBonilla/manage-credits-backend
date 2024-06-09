@@ -44,19 +44,20 @@ public class TeacherService(
   {
     if (!_teacherRepository.Exists(teacher => teacher.TeacherId == teacherId))
       throw new ServiceErrorException(HttpStatusCode.NotFound, $"Teacher not found with related identifier \"{teacherId}\"");
-    if (_classRepository.Exists(obj => obj.SubjectId == obj.SubjectId && obj.Name == classObj.Name))
+    if (_classRepository.Exists(entity => entity.SubjectId == entity.SubjectId && entity.Name.Equals(classObj.Name, StringComparison.OrdinalIgnoreCase)))
       throw new ServiceErrorException(HttpStatusCode.BadRequest, $"Class \"{classObj.Name}\" is already linked to the subject");
+    TeacherDetailEntity teacherDetail = _teacherDetailRepository.Find(detail => detail.TeacherId == teacherId && detail.SubjectId == classObj.SubjectId) ?? throw new ServiceErrorException(HttpStatusCode.BadRequest, $"Teacher \"{teacherId}\" does not have the subject \"{classObj.SubjectId}\" assigned to add the class");
     classObj = _classRepository.Create(classObj);
     _ = await _context.SaveAsync();
     var studentDetails = _studentRepository.GetAll()
       .Select(student => new StudentDetailEntity
       {
-        TeacherDetailId = teacherId,
+        TeacherDetailId = teacherDetail.TeacherDetailId,
         StudentId = student.StudentId,
         ClassId = classObj.ClassId,
         Status = ClassStatus.Pending
       });
-    _studentDetailRepository.CreateRange(studentDetails);
+    studentDetails = _studentDetailRepository.CreateRange(studentDetails);
     _ = await _context.SaveAsync();
 
     return classObj;
