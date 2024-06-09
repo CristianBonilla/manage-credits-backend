@@ -16,7 +16,7 @@ public class Repository<TContext, TEntity>(IRepositoryContext<TContext> context)
 
   public IEnumerable<TEntity> CreateRange(IEnumerable<TEntity> entities)
   {
-    return Range();
+    return Range().ToArray();
 
     IEnumerable<TEntity> Range()
     {
@@ -37,7 +37,7 @@ public class Repository<TContext, TEntity>(IRepositoryContext<TContext> context)
 
   public IEnumerable<TEntity> UpdateRange(IEnumerable<TEntity> entities)
   {
-    return Range();
+    return Range().ToArray();
 
     IEnumerable<TEntity> Range()
     {
@@ -58,7 +58,7 @@ public class Repository<TContext, TEntity>(IRepositoryContext<TContext> context)
 
   public IEnumerable<TEntity> DeleteRange(IEnumerable<TEntity> entities)
   {
-    return Range();
+    return Range().ToArray();
 
     IEnumerable<TEntity> Range()
     {
