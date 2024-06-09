@@ -33,7 +33,8 @@ public class TeacherService(
     _ = await _context.SaveAsync();
     if (subjectIDs.Length == 0)
       throw new ServiceErrorException(HttpStatusCode.BadRequest, $"Teacher with document number \"{teacher.DocumentNumber}\" does not contain any linked subject");
-    var teacherDetails = subjectIDs.SelectMany(subjectId => GetTeacherDetails(teacher.TeacherId, subjectId));
+    var teacherDetails = subjectIDs.Distinct()
+      .SelectMany(subjectId => GetTeacherDetails(teacher.TeacherId, subjectId));
     teacherDetails = _teacherDetailRepository.CreateRange(teacherDetails);
     _ = await _context.SaveAsync();
 
