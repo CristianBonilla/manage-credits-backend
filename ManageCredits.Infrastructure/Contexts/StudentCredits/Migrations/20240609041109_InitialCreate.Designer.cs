@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
 {
     [DbContext(typeof(StudentCreditsContext))]
-    [Migration("20240604113012_InitialCreate")]
+    [Migration("20240609041109_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,14 +30,11 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     b.Property<Guid>("ClassId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
-                        .HasColumnName("class_id")
-                        .HasDefaultValueSql("(UUID())");
+                        .HasColumnName("class_id");
 
                     b.Property<DateTimeOffset>("Created")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext")
@@ -73,7 +70,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             ClassId = new Guid("b96044ee-9bb6-4733-af11-1bd8eedf8b7d"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 12, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 12, 1, 0, 1, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how design patterns have become an object of some controversy in the programming world of late, largely due to their perceived \"overuse\", leading to code that can be more difficult to understand and manage",
                             Name = "Why design patterns?",
                             SubjectId = new Guid("2ee9ebee-460c-4389-a50b-f0b602a2f617")
@@ -81,7 +78,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             ClassId = new Guid("96437dd9-f3c7-4b11-a2a5-c59a0d5aed1c"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 13, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 13, 2, 1, 2, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Conozca los principios Single Reponsability Principle (SRP), Open/Closed Principle (OCP), Liskov Substitution Principle (LSP), Interface Segregation Principle (ISP) y Dependency Inversion Principle (DIP)",
                             Name = "Why S.O.L.I.D Principles?",
                             SubjectId = new Guid("8a4b2308-49d0-44db-b2d5-675742d5f2fe")
@@ -89,7 +86,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             ClassId = new Guid("fe4f5476-b903-4399-b4d8-d97d9d3b1c22"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 14, 3, 2, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 14, 3, 2, 3, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how this domain-oriented architecture helps us solve the central problem of the domain in an effective way",
                             Name = "DDD Architecture",
                             SubjectId = new Guid("5a5f617c-4b9b-4974-9104-bd173b107172")
@@ -97,49 +94,49 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             ClassId = new Guid("85f0c48a-7b2b-456a-95fb-8c6b827a719c"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 16, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 16, 1, 0, 4, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Implement microservices architecture",
                             SubjectId = new Guid("eb8e2deb-9f48-4376-b5d0-9e5f898d6586")
                         },
                         new
                         {
                             ClassId = new Guid("4905befb-9d92-42dd-8be3-82d761339b34"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 17, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 17, 2, 1, 5, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Learn about QA Automation",
                             SubjectId = new Guid("e9a4cce8-57b0-4693-bf22-cfec292bccc5")
                         },
                         new
                         {
                             ClassId = new Guid("c5bc16d1-1046-4b44-976a-564fc5df7d65"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 18, 3, 2, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 18, 3, 2, 6, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Learn QA Automation Tools",
                             SubjectId = new Guid("e2fd4b74-7b10-446e-821e-55717899c400")
                         },
                         new
                         {
                             ClassId = new Guid("39537c6a-49d9-4496-a170-6e95d517ca81"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 19, 4, 3, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 19, 4, 3, 7, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Learn about Scrum Master",
                             SubjectId = new Guid("4b2d9626-0259-42a5-a98c-11019b4cf873")
                         },
                         new
                         {
                             ClassId = new Guid("a9a5f58a-2b02-4a0e-bf43-88a1080c82b4"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 20, 5, 4, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 20, 5, 4, 8, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Become a Scrum Master expert",
                             SubjectId = new Guid("fc560c08-aa92-44c6-9ae1-101987824877")
                         },
                         new
                         {
                             ClassId = new Guid("27344f1d-c2d4-46eb-8a70-39943856ccf7"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 21, 6, 5, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 21, 6, 5, 9, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Master the TypeScript superset",
                             SubjectId = new Guid("9748e5ff-07ba-4cb8-8617-53a785fc2ebf")
                         },
                         new
                         {
                             ClassId = new Guid("1a3112f6-c99a-42e7-a25e-e912bc367954"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 22, 7, 6, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 22, 7, 6, 10, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Inventory application with Angular",
                             SubjectId = new Guid("a3e42c74-8a68-4e2d-b339-caa2e89db0a7")
                         });
@@ -150,18 +147,15 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     b.Property<Guid>("StudentDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
-                        .HasColumnName("student_detail_id")
-                        .HasDefaultValueSql("(UUID())");
+                        .HasColumnName("student_detail_id");
 
                     b.Property<Guid>("ClassId")
                         .HasColumnType("char(36)")
                         .HasColumnName("class_id");
 
                     b.Property<DateTimeOffset>("Created")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -198,7 +192,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         {
                             StudentDetailId = new Guid("11ab0e13-3a0a-4fd7-9f80-3dc89b181efb"),
                             ClassId = new Guid("b96044ee-9bb6-4733-af11-1bd8eedf8b7d"),
-                            Created = new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 1, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Status = "Pending",
                             StudentId = new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"),
                             TeacherDetailId = new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2")
@@ -207,7 +201,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         {
                             StudentDetailId = new Guid("2096ecba-29db-49d6-9646-a6c3e424953f"),
                             ClassId = new Guid("96437dd9-f3c7-4b11-a2a5-c59a0d5aed1c"),
-                            Created = new DateTimeOffset(new DateTime(2024, 3, 3, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 3, 3, 2, 1, 2, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Status = "Completed",
                             StudentId = new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"),
                             TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
@@ -216,7 +210,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         {
                             StudentDetailId = new Guid("eab71419-9084-4e72-9558-ce4d76f0fd30"),
                             ClassId = new Guid("b96044ee-9bb6-4733-af11-1bd8eedf8b7d"),
-                            Created = new DateTimeOffset(new DateTime(2024, 3, 4, 3, 2, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 3, 4, 3, 2, 3, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Status = "Pending",
                             StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                             TeacherDetailId = new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2")
@@ -225,7 +219,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         {
                             StudentDetailId = new Guid("90812e38-67ad-4207-8017-e2b09231231e"),
                             ClassId = new Guid("96437dd9-f3c7-4b11-a2a5-c59a0d5aed1c"),
-                            Created = new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 3, 2, 1, 0, 4, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Status = "InProgress",
                             StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
                             TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046")
@@ -237,14 +231,11 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     b.Property<Guid>("TeacherDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
-                        .HasColumnName("teacher_detail_id")
-                        .HasDefaultValueSql("(UUID())");
+                        .HasColumnName("teacher_detail_id");
 
                     b.Property<DateTimeOffset>("Created")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+                        .HasColumnName("created_at");
 
                     b.Property<Guid>("SubjectId")
                         .HasColumnType("char(36)")
@@ -277,7 +268,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("f87b9e01-7066-4a18-bbe5-560a9c6ddec2"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 2, 1, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 2, 1, 0, 1, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("2ee9ebee-460c-4389-a50b-f0b602a2f617"),
                             TeacherId = new Guid("d3e5862d-3c30-4b35-8a0d-4632572aae47"),
                             TotalCredits = 3.0m
@@ -285,7 +276,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("f79f1e3c-8974-4b38-8f9d-72e738efb046"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 3, 2, 1, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 3, 2, 1, 2, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("8a4b2308-49d0-44db-b2d5-675742d5f2fe"),
                             TeacherId = new Guid("d3e5862d-3c30-4b35-8a0d-4632572aae47"),
                             TotalCredits = 3.0m
@@ -293,7 +284,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("d6e0c50c-e994-4d6b-aca0-ebc09b411aa0"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 4, 3, 2, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 4, 3, 2, 3, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("5a5f617c-4b9b-4974-9104-bd173b107172"),
                             TeacherId = new Guid("f41ed5f9-d853-4077-b6fe-9bb277bee93d"),
                             TotalCredits = 3.0m
@@ -301,7 +292,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("3b34bdd2-dc7c-41a1-bd79-dc8465aa2bf1"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 5, 4, 3, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 5, 4, 3, 4, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("eb8e2deb-9f48-4376-b5d0-9e5f898d6586"),
                             TeacherId = new Guid("f41ed5f9-d853-4077-b6fe-9bb277bee93d"),
                             TotalCredits = 3.0m
@@ -309,7 +300,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("cf98b2d3-7d9b-4ce1-996a-ed25c706b644"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 6, 5, 4, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 6, 5, 4, 5, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("e9a4cce8-57b0-4693-bf22-cfec292bccc5"),
                             TeacherId = new Guid("08cd0782-93ba-4de3-b363-e7a4df2bfe7b"),
                             TotalCredits = 3.0m
@@ -317,7 +308,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("ccc8bb25-685f-404b-b53d-d446686f9cec"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 7, 6, 5, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 7, 6, 5, 6, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("e2fd4b74-7b10-446e-821e-55717899c400"),
                             TeacherId = new Guid("08cd0782-93ba-4de3-b363-e7a4df2bfe7b"),
                             TotalCredits = 3.0m
@@ -325,7 +316,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("4f098579-1bd2-4e7c-822a-9160871450de"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 8, 7, 6, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 8, 7, 6, 7, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("4b2d9626-0259-42a5-a98c-11019b4cf873"),
                             TeacherId = new Guid("42318f73-c7fd-4490-9594-7c72a77bbee7"),
                             TotalCredits = 3.0m
@@ -333,7 +324,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("a5794476-1317-4ebc-86b3-e9640b20a1a8"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 9, 8, 7, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 9, 8, 7, 8, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("fc560c08-aa92-44c6-9ae1-101987824877"),
                             TeacherId = new Guid("42318f73-c7fd-4490-9594-7c72a77bbee7"),
                             TotalCredits = 3.0m
@@ -341,7 +332,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("7240162d-4f52-425d-a4f6-54b4127e8828"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 10, 9, 8, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 10, 9, 8, 9, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("9748e5ff-07ba-4cb8-8617-53a785fc2ebf"),
                             TeacherId = new Guid("c774f591-750a-47f9-b283-327cdb62f627"),
                             TotalCredits = 3.0m
@@ -349,7 +340,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherDetailId = new Guid("10ed0335-ece3-4e80-9c01-28e1f1f3fe67"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 11, 11, 10, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 11, 11, 10, 10, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             SubjectId = new Guid("a3e42c74-8a68-4e2d-b339-caa2e89db0a7"),
                             TeacherId = new Guid("c774f591-750a-47f9-b283-327cdb62f627"),
                             TotalCredits = 3.0m
@@ -361,14 +352,11 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     b.Property<Guid>("StudentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
-                        .HasColumnName("student_id")
-                        .HasDefaultValueSql("(UUID())");
+                        .HasColumnName("student_id");
 
                     b.Property<DateTimeOffset>("Created")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("DocumentNumber")
                         .IsRequired()
@@ -413,7 +401,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             StudentId = new Guid("ee466b07-1d3e-4356-8d03-0067d5ba30e5"),
-                            Created = new DateTimeOffset(new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 3, 1, 0, 1, 1, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1033671288",
                             Email = "angela.suarez@outlook.com",
                             Firstname = "Angela Natalia",
@@ -422,7 +410,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             StudentId = new Guid("107e7e52-74fc-4589-b7d9-5f1ffc434637"),
-                            Created = new DateTimeOffset(new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 3, 3, 2, 2, 2, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1109432112",
                             Email = "jeison.bonilla@gmail.com",
                             Firstname = "Jeison Andrés",
@@ -435,14 +423,11 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     b.Property<Guid>("SubjectId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
-                        .HasColumnName("subject_id")
-                        .HasDefaultValueSql("(UUID())");
+                        .HasColumnName("subject_id");
 
                     b.Property<DateTimeOffset>("Created")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext")
@@ -472,70 +457,70 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             SubjectId = new Guid("2ee9ebee-460c-4389-a50b-f0b602a2f617"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 11, 1, 0, 1, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn to identify system problems with a general, reusable, scalable and applicable solution",
                             Name = "Design Patterns"
                         },
                         new
                         {
                             SubjectId = new Guid("8a4b2308-49d0-44db-b2d5-675742d5f2fe"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 15, 2, 1, 2, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how to apply a set of rules and best practices for software development",
                             Name = "S.O.L.I.D Principles"
                         },
                         new
                         {
                             SubjectId = new Guid("5a5f617c-4b9b-4974-9104-bd173b107172"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 16, 3, 2, 3, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how clean architectures work to separate concerns into different, well-defined layers, with strict rules about how they should interact with each other",
                             Name = "Clean Architecture"
                         },
                         new
                         {
                             SubjectId = new Guid("eb8e2deb-9f48-4376-b5d0-9e5f898d6586"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 17, 4, 3, 4, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how to implement a design methodology for rapid deployment and updating of cloud-based applications",
                             Name = "Microservices Architecture"
                         },
                         new
                         {
                             SubjectId = new Guid("e9a4cce8-57b0-4693-bf22-cfec292bccc5"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 18, 5, 4, 5, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn why QA Automation is so important in the software development cycle",
                             Name = "QA Automation Fundamentals"
                         },
                         new
                         {
                             SubjectId = new Guid("e2fd4b74-7b10-446e-821e-55717899c400"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 19, 6, 5, 6, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn about the most popular tools for QA Automation, features and benefits",
                             Name = "QA Automation Tools"
                         },
                         new
                         {
                             SubjectId = new Guid("4b2d9626-0259-42a5-a98c-11019b4cf873"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 20, 7, 6, 7, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Discover how a Scrum Master can lead a team and keep members focused on the principles of the framework",
                             Name = "Scrum Master Fundamentals"
                         },
                         new
                         {
                             SubjectId = new Guid("fc560c08-aa92-44c6-9ae1-101987824877"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 21, 8, 7, 8, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Discover how a Scrum Master should expertly plan to maintain a fully agile team",
                             Name = "Planning a scrum master"
                         },
                         new
                         {
                             SubjectId = new Guid("9748e5ff-07ba-4cb8-8617-53a785fc2ebf"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 22, 9, 8, 9, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how to become an expert with TypeScript the JavaScript superset for strict typing",
                             Name = "Development With TypeScript"
                         },
                         new
                         {
                             SubjectId = new Guid("a3e42c74-8a68-4e2d-b339-caa2e89db0a7"),
-                            Created = new DateTimeOffset(new DateTime(2024, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 1, 23, 10, 9, 10, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Learn how to develop with one of the most popular and powerful frameworks, create robust applications",
                             Name = "Angular Fundamentals"
                         });
@@ -546,14 +531,11 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                     b.Property<Guid>("TeacherId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
-                        .HasColumnName("teacher_id")
-                        .HasDefaultValueSql("(UUID())");
+                        .HasColumnName("teacher_id");
 
                     b.Property<DateTimeOffset>("Created")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+                        .HasColumnName("created_at");
 
                     b.Property<string>("DocumentNumber")
                         .IsRequired()
@@ -605,7 +587,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherId = new Guid("d3e5862d-3c30-4b35-8a0d-4632572aae47"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 1, 0, 1, 1, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1023944678",
                             Email = "cristian10camilo95@gmail.com",
                             Firstname = "Cristian Camilo",
@@ -615,7 +597,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherId = new Guid("f41ed5f9-d853-4077-b6fe-9bb277bee93d"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 2, 1, 2, 2, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1090012334",
                             Email = "fernando.gutierrez@gmail.com",
                             Firstname = "Fernando",
@@ -625,7 +607,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherId = new Guid("08cd0782-93ba-4de3-b363-e7a4df2bfe7b"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 3, 2, 3, 3, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1127789231",
                             Email = "ana.suarez@outlook.com",
                             Firstname = "Ana Camila",
@@ -635,7 +617,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherId = new Guid("42318f73-c7fd-4490-9594-7c72a77bbee7"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 4, 3, 4, 4, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1643398122",
                             Email = "maria_natalia.garcia@outlook.com",
                             Firstname = "Maria Natalia",
@@ -645,7 +627,7 @@ namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Migrations
                         new
                         {
                             TeacherId = new Guid("c774f591-750a-47f9-b283-327cdb62f627"),
-                            Created = new DateTimeOffset(new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
+                            Created = new DateTimeOffset(new DateTime(2024, 2, 5, 4, 5, 5, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             DocumentNumber = "1992233120",
                             Email = "carlos.herrera@gmail.com",
                             Firstname = "Carlos Francisco",

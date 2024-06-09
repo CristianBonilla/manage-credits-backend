@@ -17,7 +17,7 @@ class StudentDetailCollection : SeedDataCollection<StudentDetailEntity>
       StudentId = _students[0].StudentId,
       ClassId = _classes[0].ClassId,
       Status = ClassStatus.Pending,
-      Created = new DateTimeOffset(2024, 3, 2, 1, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 3, 2, 1, 0, 1, TimeSpan.Zero)
     },
     new StudentDetailEntity
     {
@@ -26,7 +26,7 @@ class StudentDetailCollection : SeedDataCollection<StudentDetailEntity>
       StudentId = _students[0].StudentId,
       ClassId = _classes[1].ClassId,
       Status = ClassStatus.Completed,
-      Created = new DateTimeOffset(2024, 3, 3, 2, 1, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 3, 3, 2, 1, 2, TimeSpan.Zero)
     },
     new StudentDetailEntity
     {
@@ -35,7 +35,7 @@ class StudentDetailCollection : SeedDataCollection<StudentDetailEntity>
       StudentId = _students[1].StudentId,
       ClassId = _classes[0].ClassId,
       Status = ClassStatus.Pending,
-      Created = new DateTimeOffset(2024, 3, 4, 3, 2, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 3, 4, 3, 2, 3, TimeSpan.Zero)
     },
     new StudentDetailEntity
     {
@@ -44,7 +44,7 @@ class StudentDetailCollection : SeedDataCollection<StudentDetailEntity>
       StudentId = _students[1].StudentId,
       ClassId = _classes[1].ClassId,
       Status = ClassStatus.InProgress,
-      Created = new DateTimeOffset(2024, 3, 2, 1, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 3, 2, 1, 0, 4, TimeSpan.Zero)
     }
   ];
 

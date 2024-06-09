@@ -13,7 +13,7 @@ class StudentCollection : SeedDataCollection<StudentEntity>
       Firstname = "Angela Natalia",
       Lastname = "Suarez",
       Email = "angela.suarez@outlook.com",
-      Created = new DateTimeOffset(2024, 3, 1, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 3, 1, 0, 1, 1, TimeSpan.Zero)
     },
     new StudentEntity
     {
@@ -22,7 +22,7 @@ class StudentCollection : SeedDataCollection<StudentEntity>
       Firstname = "Jeison Andrés",
       Lastname = "Bonilla",
       Email = "jeison.bonilla@gmail.com",
-      Created = new DateTimeOffset(2024, 3, 2, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 3, 3, 2, 2, 2, TimeSpan.Zero)
     }
   ];
 

@@ -15,7 +15,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[0].TeacherId,
       SubjectId = _subjects[0].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 2, 1, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 2, 1, 0, 1, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -23,7 +23,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[0].TeacherId,
       SubjectId = _subjects[1].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 3, 2, 1, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 3, 2, 1, 2, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -31,7 +31,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[1].TeacherId,
       SubjectId = _subjects[2].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 4, 3, 2, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 4, 3, 2, 3, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -39,7 +39,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[1].TeacherId,
       SubjectId = _subjects[3].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 5, 4, 3, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 5, 4, 3, 4, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -47,7 +47,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[2].TeacherId,
       SubjectId = _subjects[4].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 6, 5, 4, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 6, 5, 4, 5, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -55,7 +55,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[2].TeacherId,
       SubjectId = _subjects[5].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 7, 6, 5, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 7, 6, 5, 6, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -63,7 +63,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[3].TeacherId,
       SubjectId = _subjects[6].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 8, 7, 6, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 8, 7, 6, 7, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -71,7 +71,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[3].TeacherId,
       SubjectId = _subjects[7].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 9, 8, 7, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 9, 8, 7, 8, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -79,7 +79,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[4].TeacherId,
       SubjectId = _subjects[8].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 10, 9, 8, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 10, 9, 8, 9, TimeSpan.Zero)
     },
     new TeacherDetailEntity
     {
@@ -87,7 +87,7 @@ class TeacherDetailCollection : SeedDataCollection<TeacherDetailEntity>
       TeacherId = _teachers[4].TeacherId,
       SubjectId = _subjects[9].SubjectId,
       TotalCredits = TeacherCommonValues.TOTAL_CREDITS,
-      Created = new DateTimeOffset(2024, 2, 11, 11, 10, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 11, 11, 10, 10, TimeSpan.Zero)
     }
   ];
 

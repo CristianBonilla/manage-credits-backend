@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ManageCredits.Contracts.DTO.SeedData;
 using ManageCredits.Domain.Entities;
 using ManageCredits.Domain.Entities.Details;
+using ManageCredits.Domain.Helpers.Generators;
 
 namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Config;
 
@@ -14,7 +15,7 @@ class TeacherConfig(ISeedData? seedData = null) : IEntityTypeConfiguration<Teach
       .HasKey(key => key.TeacherId);
     builder.Property(property => property.TeacherId)
       .HasColumnName("teacher_id")
-      .HasDefaultValueSql("(UUID())");
+      .HasValueGenerator(typeof(NewGuidGenerator));
     builder.Property(property => property.DocumentNumber)
       .HasColumnName("document_number")
       .IsRequired();
@@ -41,7 +42,7 @@ class TeacherConfig(ISeedData? seedData = null) : IEntityTypeConfiguration<Teach
     builder.Property(property => property.Created)
       .HasColumnName("created_at")
       .HasColumnType("timestamp")
-      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+      .HasValueGenerator(typeof(DateTimeOffsetUtcNowGenerator));
     builder.Property(property => property.Version)
       .HasColumnName("version")
       .IsRowVersion();
@@ -64,7 +65,7 @@ class TeacherDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Teache
       .HasKey(key => key.TeacherDetailId);
     builder.Property(property => property.TeacherDetailId)
       .HasColumnName("teacher_detail_id")
-      .HasDefaultValueSql("(UUID())");
+      .HasValueGenerator(typeof(NewGuidGenerator));
     builder.Property(property => property.TeacherId)
       .HasColumnName("teacher_id");
     builder.Property(property => property.SubjectId)
@@ -76,7 +77,7 @@ class TeacherDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Teache
     builder.Property(property => property.Created)
       .HasColumnName("created_at")
       .HasColumnType("timestamp")
-      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+      .HasValueGenerator(typeof(DateTimeOffsetUtcNowGenerator));
     builder.Property(property => property.Version)
       .HasColumnName("version")
       .IsRowVersion();

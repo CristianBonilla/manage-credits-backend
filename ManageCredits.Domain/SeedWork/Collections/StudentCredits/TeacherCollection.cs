@@ -14,7 +14,7 @@ class TeacherCollection : SeedDataCollection<TeacherEntity>
       Lastname = "Bonilla",
       Email = "cristian10camilo95@gmail.com",
       Profession = "Senior Software Developer",
-      Created = new DateTimeOffset(2024, 2, 1, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 1, 0, 1, 1, TimeSpan.Zero)
     },
     new TeacherEntity
     {
@@ -24,7 +24,7 @@ class TeacherCollection : SeedDataCollection<TeacherEntity>
       Lastname = "Gutierrez",
       Email = "fernando.gutierrez@gmail.com",
       Profession = "Senior Software Architect",
-      Created = new DateTimeOffset(2024, 2, 2, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 2, 1, 2, 2, TimeSpan.Zero)
     },
     new TeacherEntity
     {
@@ -34,7 +34,7 @@ class TeacherCollection : SeedDataCollection<TeacherEntity>
       Lastname = "Suarez",
       Email = "ana.suarez@outlook.com",
       Profession = "QA Automation",
-      Created = new DateTimeOffset(2024, 2, 3, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 3, 2, 3, 3, TimeSpan.Zero)
     },
     new TeacherEntity
     {
@@ -44,7 +44,7 @@ class TeacherCollection : SeedDataCollection<TeacherEntity>
       Lastname = "Garcia",
       Email = "maria_natalia.garcia@outlook.com",
       Profession = "Scrum Master",
-      Created = new DateTimeOffset(2024, 2, 4, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 4, 3, 4, 4, TimeSpan.Zero)
     },
     new TeacherEntity
     {
@@ -54,7 +54,7 @@ class TeacherCollection : SeedDataCollection<TeacherEntity>
       Lastname = "Herrera",
       Email = "carlos.herrera@gmail.com",
       Profession = "Senior Frontend Developer",
-      Created = new DateTimeOffset(2024, 2, 5, 0, 0, 0, TimeSpan.Zero)
+      Created = new DateTimeOffset(2024, 2, 5, 4, 5, 5, TimeSpan.Zero)
     }
   ];
 

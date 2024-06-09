@@ -4,6 +4,7 @@ using ManageCredits.Contracts.DTO.SeedData;
 using ManageCredits.Domain.Entities;
 using ManageCredits.Domain.Entities.Details;
 using ManageCredits.Domain.Helpers;
+using ManageCredits.Domain.Helpers.Generators;
 
 namespace ManageCredits.Infrastructure.Contexts.StudentCredits.Config;
 
@@ -15,7 +16,7 @@ class StudentConfig(ISeedData? seedData) : IEntityTypeConfiguration<StudentEntit
       .HasKey(key => key.StudentId);
     builder.Property(property => property.StudentId)
       .HasColumnName("student_id")
-      .HasDefaultValueSql("(UUID())");
+      .HasValueGenerator(typeof(NewGuidGenerator));
     builder.Property(property => property.DocumentNumber)
       .HasColumnName("document_number")
       .IsRequired();
@@ -37,7 +38,7 @@ class StudentConfig(ISeedData? seedData) : IEntityTypeConfiguration<StudentEntit
     builder.Property(property => property.Created)
       .HasColumnName("created_at")
       .HasColumnType("timestamp")
-      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+      .HasValueGenerator(typeof(DateTimeOffsetUtcNowGenerator));
     builder.Property(property => property.Version)
       .HasColumnName("version")
       .IsRowVersion();
@@ -60,7 +61,7 @@ class StudentDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Studen
       .HasKey(key => key.StudentDetailId);
     builder.Property(property => property.StudentDetailId)
       .HasColumnName("student_detail_id")
-      .HasDefaultValueSql("(UUID())");
+      .HasValueGenerator(typeof(NewGuidGenerator));
     builder.Property(property => property.TeacherDetailId)
       .HasColumnName("teacher_detail_id");
     builder.Property(property => property.StudentId)
@@ -75,7 +76,7 @@ class StudentDetailConfig(ISeedData? seedData) : IEntityTypeConfiguration<Studen
     builder.Property(property => property.Created)
       .HasColumnName("created_at")
       .HasColumnType("timestamp")
-      .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
+      .HasValueGenerator(typeof(DateTimeOffsetUtcNowGenerator));
     builder.Property(property => property.Version)
       .HasColumnName("version")
       .IsRowVersion();
