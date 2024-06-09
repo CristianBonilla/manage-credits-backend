@@ -14,5 +14,8 @@ class StudentCreditsModule : Module
     builder.RegisterType<StudentService>()
       .As<IStudentService>()
       .InstancePerLifetimeScope();
+    builder.RegisterType<SubjectService>()
+      .As<ISubjectService>()
+      .InstancePerLifetimeScope();
   }
 }
