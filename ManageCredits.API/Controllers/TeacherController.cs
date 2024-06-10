@@ -23,7 +23,7 @@ public class TeacherController(IMapper mapper, ITeacherService service) : Contro
   [HttpGet]
   [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IAsyncEnumerable<TeacherResponse>))]
   [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-  public async IAsyncEnumerable<TeacherResponse> Get()
+  public async IAsyncEnumerable<TeacherResponse> GetTeachers()
   {
     var teachers = _service.GetTeachers();
     await foreach (TeacherEntity teacher in teachers)

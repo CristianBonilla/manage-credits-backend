@@ -21,14 +21,19 @@ public class StudentCreditsProfile : Profile
       .ForMember(member => member.Created, options => options.Ignore())
       .ForMember(member => member.Version, options => options.Ignore());
     CreateMap<TeacherEntity, TeacherResponse>();
-    CreateMap<TeacherEntity, TeacherDetailResponse>()
-      .ForMember(member => member.Subjects, options => options.Ignore());
+    CreateMap<TeacherEntity, TeacherExtendedResponse>();
+    CreateMap<(TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details), TeacherExtendedResponse>()
+      .ConvertUsing<TeacherExtendedResponseConverter>();
     CreateMap<StudentRequest, StudentEntity>()
       .ForMember(member => member.StudentId, options => options.Ignore())
       .ForMember(member => member.Details, options => options.Ignore())
       .ForMember(member => member.Created, options => options.Ignore())
       .ForMember(member => member.Version, options => options.Ignore());
     CreateMap<StudentEntity, StudentResponse>();
+    CreateMap<StudentEntity, StudentExtendedResponse>();
+    CreateMap<StudentDetailEntity, StudentDetailResponse>();
+    CreateMap<(StudentEntity, IEnumerable<StudentDetailEntity>), StudentExtendedResponse>()
+      .ConvertUsing<StudentExtendedResponseConverter>();
     CreateMap<SubjectRequest, SubjectEntity>()
       .ForMember(member => member.SubjectId, options => options.Ignore())
       .ForMember(member => member.Classes, options => options.Ignore())
@@ -45,7 +50,5 @@ public class StudentCreditsProfile : Profile
     CreateMap<ClassEntity, ClassResponse>();
     CreateMap<IAsyncEnumerable<(TeacherEntity, StudentEntity, SubjectEntity, ClassStatus, decimal)>, IAsyncEnumerable<StudentCreditsFilter>>()
       .ConvertUsing<StudentCreditsConverter>();
-    CreateMap<(TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details), TeacherDetailResponse>()
-      .ConvertUsing<TeacherDetailConverter>();
   }
 }
