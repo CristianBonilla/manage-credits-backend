@@ -31,13 +31,20 @@ public class StudentService(
   {
     student = _studentRepository.Create(student);
     _ = await _context.SaveAsync();
-    var studentDetails = subjectIDs
+    var studentDetails = subjectIDs.Distinct()
       .Select(GetTeacherDetailIdBySubjectId)
       .SelectMany(detail => GetStudentDetails(student.StudentId, detail.SubjectId, detail.TeacherDetailId));
     studentDetails = _studentDetailRepository.CreateRange(studentDetails);
     _ = await _context.SaveAsync();
 
     return (student, studentDetails);
+  }
+
+  public Task<StudentEntity> GetStudent(Guid studentId)
+  {
+    StudentEntity student = _studentRepository.Find([studentId]) ?? throw new ServiceErrorException(HttpStatusCode.NotFound, $"Student not found with related identifier \"{studentId}\"");
+
+    return Task.FromResult(student);
   }
 
   public async Task<StudentDetailEntity> StatusChange(Guid studentId, Guid classId, ClassStatus status)
