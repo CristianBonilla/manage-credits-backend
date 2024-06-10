@@ -52,16 +52,16 @@ public class TeacherController(IMapper mapper, ITeacherService service) : Contro
   }
 
   [HttpPost]
-  [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(TeacherDetailResponse))]
+  [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(TeacherExtendedResponse))]
   [ProducesResponseType(StatusCodes.Status400BadRequest)]
   [ProducesResponseType(StatusCodes.Status500InternalServerError)]
   public async Task<IActionResult> AddTeacher([FromBody] TeacherRequest teacherRequest, [FromQuery] Guid[] subjectIDs)
   {
     TeacherEntity teacher = _mapper.Map<TeacherRequest, TeacherEntity>(teacherRequest);
-    var addedTeacher = await _service.AddTeacher(teacher, subjectIDs);
-    TeacherDetailResponse teacherDetail = _mapper.Map<(TeacherEntity, IEnumerable<TeacherDetailEntity>), TeacherDetailResponse>(addedTeacher);
+    var teacherAdded = await _service.AddTeacher(teacher, subjectIDs);
+    TeacherExtendedResponse teacherExtended = _mapper.Map<(TeacherEntity, IEnumerable<TeacherDetailEntity>), TeacherExtendedResponse>(teacherAdded);
 
-    return CreatedAtAction(nameof(AddTeacher), teacherDetail);
+    return CreatedAtAction(nameof(AddTeacher), teacherExtended);
   }
 
   [HttpPost("{teacherId}/classes")]

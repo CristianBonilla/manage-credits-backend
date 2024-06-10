@@ -1,3 +1,5 @@
+using ManageCredits.Contracts.DTO.Subject;
+
 namespace ManageCredits.Contracts.DTO.Teacher;
 
 public record class TeacherResponse : BaseObject

@@ -6,15 +6,15 @@ using ManageCredits.Contracts.DTO.Subject;
 
 namespace ManageCredits.API.Mappers.Profiles.Converters;
 
-class TeacherDetailConverter : ITypeConverter<(TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details), TeacherDetailResponse>
+class TeacherExtendedResponseConverter : ITypeConverter<(TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details), TeacherExtendedResponse>
 {
-  public TeacherDetailResponse Convert((TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details) source, TeacherDetailResponse destination, ResolutionContext context)
+  public TeacherExtendedResponse Convert((TeacherEntity teacher, IEnumerable<TeacherDetailEntity> details) source, TeacherExtendedResponse destination, ResolutionContext context)
   {
     IRuntimeMapper mapper = context.Mapper;
-    TeacherDetailResponse teacher = mapper.Map<TeacherEntity, TeacherDetailResponse>(source.teacher);
-    teacher.Subjects = [.. source.details.Select(detail => GetSubjectDetail(mapper, detail))];
+    TeacherExtendedResponse teacherExtended = mapper.Map<TeacherEntity, TeacherExtendedResponse>(source.teacher);
+    teacherExtended.Subjects = [.. source.details.Select(detail => GetSubjectDetail(mapper, detail))];
 
-    return teacher;
+    return teacherExtended;
   }
 
   private static SubjectDetailResponse GetSubjectDetail(IRuntimeMapper mapper, TeacherDetailEntity teacherDetail)
