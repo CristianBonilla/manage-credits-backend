@@ -21,12 +21,13 @@ static class DbStartExtensions
 
     async Task Connect(DbStartType start)
     {
+      if (delay == 60)
+        throw new NotImplementedException("1 minute passed, failed to connect to DB");
       AsyncServiceScope scope = host.Services.CreateAsyncScope();
       TContext context = scope.ServiceProvider.GetRequiredService<TContext>();
       DatabaseFacade database = context.Database;
       try
       {
-
         await using (scope.ConfigureAwait(false))
         {
           await (start switch
